@@ -38,8 +38,9 @@ jobs:
         echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
 
         # Restart app using PM2
-        pm2 stop all || true
+        pm2 delete student-api || true
         pm2 start server.js --name student-api
         pm2 save
+
 
         EOF
